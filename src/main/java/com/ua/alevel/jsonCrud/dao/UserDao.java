@@ -58,11 +58,13 @@ public class UserDao {
 
     public User find(String id){
         this.users = readFile();
+        users.forEach(user -> user.setFullName(user.getFullName()));
         return users.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
     }
 
     public List<User> showAll(){
         this.users = readFile();
+        users.forEach(user -> user.setFullName(user.getFullName()));
         return users;
     }
 
